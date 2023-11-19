@@ -1,226 +1,322 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    font-family: 'Kanint', sans-serif;
-
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  font-family: 'Kanint', sans-serif;
 }
 
 .app {
-    background-color: white;
+  background-color: white;
 }
 .dashboardContainer {
-    width: 100vw;
-    height: 100vh;
-    background-color: #0A0D16;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0a0d16;
 }
-.navbar{
-    width: 100vw;
-    height: 60px;
-    background-color: #151925;
+.navbar {
+  width: 100vw;
+  height: 60px;
+  background-color: #151925;
 }
-.navbarContainer{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
+.navbarContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
 }
-.logoContainer{
-    height: 100%;
-    width: 33%;
-    display: flex;
-    align-items: center;
+.logoContainer {
+  height: 100%;
+  width: 33%;
+  display: flex;
+  align-items: center;
 }
 .logo {
-    background-image: url(logo.png);
-    width: 40px;
-    height: 40px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    z-index: 15;
+  background-image: url(logo.png);
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 15;
 }
-.navText{
-    color: #7a7f94;
-    margin-right: 64px;
-    font-weight:800;
-    cursor: pointer;
-} :hover{
-    color: white;
-  }
-.navButtons{
-    display: flex;
-    margin-left: 120px;
-    width: 33%;
-    z-index: 15;
+.navText {
+  color: #7a7f94;
+  margin-right: 64px;
+  font-weight: 800;
+  cursor: pointer;
 }
-.searchAvatar{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 33%;
+:hover {
+  color: white;
 }
-.search{
-    height: 40px;
-    width: 300px;
-    background-color: #35363b;
-    margin-right: 50px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 4px;
-    z-index: 15;
+.navButtons {
+  display: flex;
+  margin-left: 120px;
+  width: 33%;
+  z-index: 15;
 }
-.input{
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    background-color: transparent;
-    border: none;
-    padding: 0 16px;
-    outline: none;
-    color: white;
-} ::placeholder{
-    font-weight: 800;
-  }
-.searchIcon{
-    width: 40px;
-    height: 32px;
-    background-color: #fe4300;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.searchAvatar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 33%;
+}
+.search {
+  height: 40px;
+  width: 300px;
+  background-color: #35363b;
+  margin-right: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 4px;
+  z-index: 15;
+}
+.input {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background-color: transparent;
+  border: none;
+  padding: 0 16px;
+  outline: none;
+  color: white;
+}
+::placeholder {
+  font-weight: 800;
+}
+.searchIcon {
+  width: 40px;
+  height: 32px;
+  background-color: #fe4300;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .user {
-    background-image: url(user.png);
-    width: 25px;
-    height: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+  background-image: url(user.png);
+  width: 25px;
+  height: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 15;
 }
 
-.mainGameContainer{
-    width: 100vw;
-    height: 70%;
-    display: flex;
-    position: relative;
-
+.mainGameContainer {
+  width: 100vw;
+  height: 70%;
+  display: flex;
+  position: relative;
 }
-.mainGameTitleContainer{
-    height: 100%;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0 40px;
-    z-index: 13;
-
+.mainGameTitleContainer {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 40px;
+  z-index: 13;
 }
-.specialOffer{
-    color: white;
-    font-size: 38px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    margin-top: 16px;
+.specialOffer {
+  color: white;
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  margin-top: 16px;
 }
-.specialOfferInfo{
-    width: 160px;
-    height: 35px;
-    background-color: #fe4300;
-    border-radius: 16px;
-    margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
+.specialOfferInfo {
+  width: 160px;
+  height: 35px;
+  background-color: #fe4300;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
 }
-.mainGameContainerGradient{
-    background: linear-gradient( to right, rgba(10,13,22,0.6), rgba(10,13,22,0.05));
-    width: 10%;
-    height: 100%;
-    z-index: 12;
-}
-.mainGameContainerGradientBottom{
-    background: linear-gradient( to bottom, rgba(10,13,22,0.1), rgba(10,13,22,1));
-    width: 100%;
-    height: 30%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 12;
+.mainGameContainerGradient {
+  background: linear-gradient(
+    to right,
+    rgba(10, 13, 22, 1),
+    rgba(255, 255, 255, 0.001)
+  );
+  width: 30%;
+  height: 100%;
+  z-index: 12;
+  position: absolute;
+  left: 0;
 }
 
-.mainGameContainerGradientLeft{
-    background: linear-gradient( to right,  rgba(45,42, 97,0.7), rgba(1,1, 1,0.1), rgba(45,42, 97,0.4), rgba(1,1, 1,0.1));
-    width: 100%;
-    height: 76%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 11;
-}
-.mainGameImage{
-    width: 100%;
-    height: 100%;
-    background:  url(cyberpunk2.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.mainGameTitle{
-    color: white;
-    font-size: 100px;
-    font-weight: 800;
-    line-height: 0.9;
-}
-.preOrder{
-    width: 400px;
-    height: 60px;
-    background:linear-gradient( to right, rgba(255,255, 255,0.05), rgba(255,255,255,0.1));
-    display: flex;
-    border-radius: 16px;
-    font-size: 20px;
-    align-items: center;
-    margin-top: 16px;
-}
-.preOrderButton{
-    width: 150px;
-    height: 80%;
-    background-color: #fe4300;
-    border-radius: 16px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    margin-right: 4px;
-}
-.inputEmail{
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    background-color: transparent;
-    border: none;
-    padding: 0 16px;
-    outline: none;
-    color: white;
-    font-size: 20px;
+.mainGameContainerGradientBottom {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 13, 22, 0.01),
+    rgba(10, 13, 22, 1)
+  );
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 12;
 }
 
-
-
-
+.mainGameContainerGradientLeft {
+  background: linear-gradient(
+    to right,
+    rgba(45, 42, 97, 0.7),
+    rgba(1, 1, 1, 0.1),
+    rgba(45, 42, 97, 0.4),
+    rgba(1, 1, 1, 0.87)
+  );
+  width: 100%;
+  height: 76%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 11;
+}
+.mainGameImage {
+  width: 100%;
+  height: 100%;
+  background: url(cyberpunk2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.mainGameTitle {
+  color: white;
+  font-size: 100px;
+  font-weight: 800;
+  line-height: 0.9;
+}
+.preOrder {
+  width: 400px;
+  height: 60px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.1)
+  );
+  display: flex;
+  border-radius: 16px;
+  font-size: 20px;
+  align-items: center;
+  margin-top: 16px;
+}
+.preOrderButton {
+  width: 150px;
+  height: 80%;
+  background-color: #fe4300;
+  border-radius: 16px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  margin-right: 4px;
+}
+.inputEmail {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background-color: transparent;
+  border: none;
+  padding: 0 16px;
+  outline: none;
+  color: white;
+  font-size: 20px;
+}
+.slider {
+  position: relative;
+  width: 500%;
+  height: 100%;
+  overflow-x: hidden;
+}
+.leftArrowSlider {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  font-size: 3rem;
+  color: white;
+  z-index: 15;
+  cursor: pointer;
+  user-select: none;
+}
+.rightArrowSlider {
+  position: absolute;
+  top: 50%;
+  right: 32px;
+  font-size: 3rem;
+  color: white;
+  z-index: 15;
+  cursor: pointer;
+  user-select: none;
+}
+.imageSlider {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.slide {
+  transition-duration: 1s;
+  transition-timing-function: ease;
+}
+.slideActive {
+  opacity: 1;
+  transition-duration: 1s;
+}
+.popularGamesDots {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 40px;
+  align-items: center;
+}
+.popularGamePad {
+  background-color: #fe4300;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.popularGameTextPad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  gap: 16px;
+}
+.popularGamesText {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+.dotsContainer{
+  display: flex;
+  width: 25%;
+  align-items: center;
+  justify-content: space-between;
+}
+.dots {
+  width: 70px;
+  height: 4px;
+  border-radius: 8px;
+}
 
