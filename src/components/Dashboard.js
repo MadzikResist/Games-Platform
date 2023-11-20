@@ -2,6 +2,7 @@ import Navbar from './Navbar';
 import ImageSlider from './ImageSlider';
 import { SliderData } from './SliderData';
 import React, {useState} from 'react';
+import PopularGames from "./PopularGames";
 const Dashboard = ({  }) => {
   const [current, setCurrent] = useState(0);
 
@@ -53,6 +54,7 @@ const Dashboard = ({  }) => {
         })}
         </div>
       </div>
+      <PopularGames/>
     </div>
   );
 };
