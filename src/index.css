@@ -9,18 +9,17 @@ body {
   font-family: 'Kanint', sans-serif;
 }
 
-.app {
-  background-color: white;
-}
 .dashboardContainer {
   width: 100vw;
   height: 100vh;
   background-color: #0a0d16;
+  overflow-x: hidden;
 }
 .navbar {
   width: 100vw;
   height: 60px;
   background-color: #151925;
+  position: relative;
 }
 .navbarContainer {
   width: 100%;
@@ -50,9 +49,6 @@ body {
   margin-right: 64px;
   font-weight: 800;
   cursor: pointer;
-}
-:hover {
-  color: white;
 }
 .navButtons {
   display: flex;
@@ -157,6 +153,7 @@ body {
   z-index: 12;
   position: absolute;
   left: 0;
+
 }
 
 .mainGameContainerGradientBottom {
@@ -182,11 +179,11 @@ body {
     rgba(1, 1, 1, 0.87)
   );
   width: 100%;
-  height: 76%;
+  height: 100%;
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 11;
+  z-index: 12;
 }
 .mainGameImage {
   width: 100%;
@@ -242,7 +239,7 @@ body {
 }
 .slider {
   position: relative;
-  width: 500%;
+  width: 100%;
   height: 100%;
   overflow-x: hidden;
 }
@@ -319,4 +316,62 @@ body {
   height: 4px;
   border-radius: 8px;
 }
+.popularGames{
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 160px;
+  position: absolute;
 
+}
+.gameBlur{
+  width: 300px;
+  height: 160px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  background-size: cover;
+  position: relative;
+
+}
+.containerGamesDashboard{
+  padding-Left: 40px;
+  margin-top: 24px;
+  display: flex;
+  gap: 40px;
+}
+.gameDashboard {
+  width: 300px ;
+  height: 160px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  background-size: contain;
+
+
+
+
+}
+.popularGameBar{
+  width: 100%;
+  background-color: #242730;
+  border-radius: 0 0 8px 8px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  flex-direction: column;
+
+}
+.popularGameTitle{
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+}
+.popularGamePublisher{
+  margin-top: 4px;
+  color: #9d9ea0;
+  font-weight: 600;
+  font-size: 15px;
+}

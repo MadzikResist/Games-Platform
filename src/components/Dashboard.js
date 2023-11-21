@@ -9,11 +9,11 @@ const Dashboard = ({  }) => {
   return (
     <div className="dashboardContainer">
       <div className="navbar">
+        <div className="mainGameContainerGradientLeft"></div>
         <Navbar />
       </div>
-      <div className="mainGameContainerGradientLeft"></div>
-      <div className="mainGameContainerGradientRight"></div>
       <div className="mainGameContainer">
+        <div className="mainGameContainerGradientLeft"></div>
         <div className="mainGameContainerGradientBottom"></div>
         <div className="mainGameTitleContainer">
           <div className="specialOfferInfo">NEW OFFER</div>
