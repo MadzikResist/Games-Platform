@@ -316,52 +316,108 @@ body {
   height: 4px;
   border-radius: 8px;
 }
-.popularGames{
-  margin-top: 24px;
-  display: flex;
-  flex-direction: column;
-  width: 250px;
-  height: 160px;
-  position: absolute;
-
-}
-.gameBlur{
-  width: 300px;
-  height: 160px;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 8px;
-  background-size: cover;
-  position: relative;
-
-}
 .containerGamesDashboard{
   padding-Left: 40px;
   margin-top: 24px;
   display: flex;
   gap: 40px;
 }
-.gameDashboard {
-  width: 300px ;
-  height: 160px;
+
+.popularGames{
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  /*width: 250px;*/
+  /*height: 160px;*/
+  position: relative;
+  align-items: center;
+  transition: opacity 0.2s ease-in-out;
+  overflow: hidden;
+  border-radius: 4px;
+  z-index: 15;
+
+
+}
+.popularGames:hover .gameBlur{
+  filter:  blur(5px) brightness(50%);
+  transition: filter 0.5s ease;
+
+}
+.popularGames:hover .gameDashboard::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Kolor ciemnego filtra */
+  border-radius: 4px;
+  opacity: 0; /* Początkowo niewidoczny */
+  transition: background-color 0.5s ease;
+
+}
+.popularGames:hover  .gameDashboard::after {
+  opacity: 1; /* Wyświetlaj filtry przy najechaniu */
+  transition: background-color 0.5s ease;
+
+}
+.popularGames:hover{
+  cursor: pointer;
+}
+.gameBlur{
+  width: 300px;
+  height: 200px;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 8px;
+  border-radius: 4px;
+  background-size: cover;
+  filter: blur(5px) brightness(40%);
+}
+
+.gameDashboard {
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
   background-size: contain;
-
-
-
-
+  position: absolute;
+}
+.shopButton{
+  background-color: #fe4300;
+  position: absolute;
+  display: flex;
+  padding: 0;
+  width: 0;
+  height:0;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+  color: white;
+  border-radius: 4px;
+  top: 30%;
+  font-size: 0;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.popularGames:hover  .shopButton {
+  width: 180px;
+  height: 40px;
+  font-size:18px;
 }
 .popularGameBar{
   width: 100%;
   background-color: #242730;
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 4px 4px;
   margin-bottom: 24px;
   display: flex;
   justify-content: center;
   padding: 10px;
   flex-direction: column;
+}
+.popularGames:hover  .popularGameBar {
+  background-color: #3a3e45;
 
 }
 .popularGameTitle{
