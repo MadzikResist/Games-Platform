@@ -6,25 +6,25 @@ const PopularGames = () => {
   const [listGames, setListGames] = useState({});
   const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(true)
-  useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        const response = await fetch(api_url);
-        if (!response.ok) throw Error('Did not recieve expected data');
-        const listGames = await response.json();
-        setListGames(listGames['292030'].data);
-        setFetchError(null);
-        console.log(listGames, 'listgames')
-      } catch (err){
-        console.log(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    setTimeout(() => {
-      (async () => await fetchGames())();
-    }, 2000)
-  }, []);
+  // useEffect(() => {
+  //   const fetchGames = async () => {
+  //     try {
+  //       const response = await fetch(api_url);
+  //       if (!response.ok) throw Error('Did not recieve expected data');
+  //       const listGames = await response.json();
+  //       setListGames(listGames['292030'].data);
+  //       setFetchError(null);
+  //       console.log(listGames, 'listgames')
+  //     } catch (err){
+  //       console.log(err.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+  //   setTimeout(() => {
+  //     (async () => await fetchGames())();
+  //   }, 2000)
+  // }, []);
 
   // fetch(api_url)
   //   .then((res) => res.json())
