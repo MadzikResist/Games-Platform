@@ -1,10 +1,11 @@
 import Navbar from './Navbar';
 import ImageSlider from './ImageSlider';
 import { SliderData } from './SliderData';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PopularGames from "./PopularGames";
 const Dashboard = () => {
   const [current, setCurrent] = useState(0);
+
 
   return (
     <div className="dashboardContainer">
