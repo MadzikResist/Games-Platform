@@ -2,10 +2,8 @@ import React, {useEffect, useState} from 'react';
 
 
 const PopularGames = () => {
-  const api_url = 'http://localhost:8000/games';
   const [listGames, setListGames] = useState({});
-  const [fetchError, setFetchError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true)
+
 
   // const getData  = async () => {
   //   try {
