@@ -34,7 +34,7 @@ const PopularGames = () => {
             <div className="gameDashboard" style={{backgroundImage: `url(${dataObj.header_image})`}}/>
             <div className="popularGameBar">
               <div className="popularGameTitle">{dataObj.name}</div>
-              {/*<div className="popularGamePublisher">{listGames.publishers}</div>*/}
+              <div className="popularGamePublisher">{dataObj.publishers}</div>
             </div>
       </div>
     )}
