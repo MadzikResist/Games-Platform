@@ -317,14 +317,15 @@ body {
   border-radius: 8px;
 }
 .containerGamesDashboard{
-  padding-Left: 40px;
+  padding: 40px;
   margin-top: 24px;
   display: flex;
-  gap: 40px;
+  flex-wrap: wrap;
+  gap: 20px 75px
 }
 
 .popularGames{
-  margin-top: 24px;
+  /*margin-right: 60px;*/
   display: flex;
   flex-direction: column;
   /*width: 250px;*/
@@ -335,6 +336,7 @@ body {
   overflow: hidden;
   border-radius: 4px;
   z-index: 15;
+
 
 
 }
@@ -407,7 +409,7 @@ body {
   font-size:18px;
 }
 .popularGameBar{
-  width: 100%;
+  width: 300px;
   background-color: #242730;
   border-radius: 0 0 4px 4px;
   margin-bottom: 24px;
@@ -415,6 +417,7 @@ body {
   justify-content: center;
   padding: 10px;
   flex-direction: column;
+
 }
 .popularGames:hover  .popularGameBar {
   background-color: #3a3e45;
@@ -424,10 +427,19 @@ body {
   color: #ffffff;
   font-weight: 700;
   font-size: 16px;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
 }
 .popularGamePublisher{
   margin-top: 4px;
   color: #9d9ea0;
   font-weight: 600;
   font-size: 15px;
+}
+.loadingStyle{
+  padding-left: 40px;
+  color: white;
 }
