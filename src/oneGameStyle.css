@@ -1,0 +1,53 @@
+
+.oneGameContainer{
+    width: 100vw;
+    height: 100vh;
+    background-color: #0a0d16;
+    overflow-x: hidden;
+}
+.sliderOneGame{
+    position: relative;
+    width: 40%;
+    height: 60%;
+    overflow-x: hidden;
+}
+.mainGameContainerOneGame{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.oneGameTitle{
+    color: white;
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 0.9;
+}
+.oneGameTitleContainer {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 40px;
+    z-index: 13;
+    margin-top: 14%;
+}
+.oneGameDotsContainer{
+    display: flex;
+    width: 25%;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    right: 20%;
+    bottom: 40%
+}
+.oneGameDescription{
+    color: white;
+    width: 100%;
+    margin-top: 24px;
+    font-size: 20px;
+}

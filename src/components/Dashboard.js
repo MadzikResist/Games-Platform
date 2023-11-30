@@ -1,7 +1,7 @@
 import Navbar from './Navbar';
 import ImageSlider from './ImageSlider';
 import { SliderData } from './SliderData';
-import React, {useState, useEffect} from 'react';
+import {useState} from 'react';
 import PopularGames from "./PopularGames";
 const Dashboard = () => {
   const [current, setCurrent] = useState(0);

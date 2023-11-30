@@ -1,6 +1,6 @@
 import { SliderData } from './SliderData';
 
-const ImageSlider = ({ slides, current, setCurrent }) => {
+const ImageSliderOneGame = ({ slides, current, setCurrent }) => {
   const length = slides.length;
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
@@ -12,8 +12,7 @@ const ImageSlider = ({ slides, current, setCurrent }) => {
     return null;
   }
   return (
-    <div className="slider">
-      <div className="mainGameContainerGradient"></div>
+    <div className="sliderOneGame">
       <div className="leftArrowSlider" onClick={prevSlide}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -61,4 +60,4 @@ const ImageSlider = ({ slides, current, setCurrent }) => {
     </div>
   );
 };
-export default ImageSlider;
+export default ImageSliderOneGame;
