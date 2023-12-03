@@ -1,7 +1,7 @@
 import { SliderData } from './SliderData';
 
 const ImageSliderOneGame = ({ slides, current, setCurrent }) => {
-  const length = slides.length;
+  const length = SliderData.length;
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
@@ -11,6 +11,7 @@ const ImageSliderOneGame = ({ slides, current, setCurrent }) => {
   if (!Array.isArray(slides) || slides.length <= 0) {
     return null;
   }
+
   return (
     <div className="sliderOneGame">
       <div className="leftArrowSlider" onClick={prevSlide}>
@@ -38,6 +39,7 @@ const ImageSliderOneGame = ({ slides, current, setCurrent }) => {
           width: '100%',
           height: '100%',
           transform: `translateX(-${current * 100}%)`,
+
         }}
         className="slide"
       >
@@ -45,7 +47,7 @@ const ImageSliderOneGame = ({ slides, current, setCurrent }) => {
           return (
             <div
               key={index}
-              className="imageSlider"
+              className="imageSliderOneGame"
               style={{
                 position: 'absolute',
                 left: `${index * 100}%`,
@@ -56,6 +58,7 @@ const ImageSliderOneGame = ({ slides, current, setCurrent }) => {
             />
           );
         })}
+
       </div>
     </div>
   );
