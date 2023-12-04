@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import loading from "../loading.gif"
+import {Link} from "react-router-dom";
 
 const PopularGames = () => {
   const [listGames, setListGames] = useState([]);
@@ -28,15 +29,17 @@ const PopularGames = () => {
     <div className="containerGamesDashboard">
     {listGames.map((dataObj) =>  {
     return (
-        <div className="popularGames"  key={dataObj.id}>
-          <div className="shopButton">Go to the Store</div>
-            <div className="gameBlur" style={{backgroundImage: `url(${dataObj.header_image})`}}></div>
-            <div className="gameDashboard" style={{backgroundImage: `url(${dataObj.header_image})`}}/>
-            <div className="popularGameBar">
-              <div className="popularGameTitle">{dataObj.name}</div>
-              <div className="popularGamePublisher">{dataObj.publishers}</div>
-            </div>
-      </div>
+        <Link to={`/game/${dataObj.id}`}>
+          <div className="popularGames"  key={dataObj.id}>
+              <div className="shopButton">Go to the Store</div>
+                <div className="gameBlur" style={{backgroundImage: `url(${dataObj.header_image})`}}></div>
+                <div className="gameDashboard" style={{backgroundImage: `url(${dataObj.header_image})`}}/>
+                <div className="popularGameBar">
+                  <div className="popularGameTitle">{dataObj.name}</div>
+                  <div className="popularGamePublisher">{dataObj.publishers}</div>
+                </div>
+          </div>
+        </Link>
     )}
     )}
     </div>

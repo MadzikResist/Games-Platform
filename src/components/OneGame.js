@@ -6,18 +6,31 @@ import ImageSliderOneGame from './ImageSliderOneGame';
 import {SliderData} from './SliderData';
 import {Pegi} from './Pegi'
 import cyberpunk2 from '../cyberpunk2.jpg'
+import {useParams} from "react-router-dom";
 const OneGame = () => {
   const [current, setCurrent] = useState(0);
-  const [listGames, setListGames] = useState([]);
+  const [oneGame, setOneGame] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-
+  const {id} = useParams();
+  console.log("id:", id)
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch("http://localhost:8000/game/");
-        const data = await response.json();
-        setListGames(data)
-        console.log("test",data);
+        const response = await fetch("http://localhost:8000/game/",
+            {
+                method: 'POST',
+                body: JSON.stringify({
+                    id,
+                }),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+        const oneGame = await response.json();
+        setOneGame(oneGame)
+        console.log("test",oneGame);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -30,13 +43,13 @@ const OneGame = () => {
       <div className="navbar">
           <Navbar />
       </div>
-    {listGames.map((dataObj) =>  {
-        return (
+    {/*{listGames.map((dataObj) =>  {*/}
+    {/*    return (*/}
           <>
-      <div className="mainGameContainerOneGame"  key={dataObj.id} >
+      <div className="mainGameContainerOneGame"   >
           <div style={{width: '100%', height: '100%',  filter: 'blur(20px)', position: 'absolute', backgroundImage: `url(${cyberpunk2})`}}></div>
           <div className="oneGameTitleContainer">
-            <div className="oneGameTitle">CYBERPUNK 2077</div>
+            <div className="oneGameTitle">{oneGame.name}</div>
             <div className="titleInfo">
               <div className="elementInfoOneGame">
                 <div className="recommendations">665</div>
@@ -78,8 +91,8 @@ const OneGame = () => {
           </div>
       </div>
           </>
-        )}
-      )}
+      {/*  )}*/}
+      {/*)}*/}
 
     </div>
 
