@@ -1,16 +1,16 @@
-import { SliderData } from './SliderData';
 
-const ImageSliderOneGame = ({ slides, current, setCurrent }) => {
-  const length = SliderData.length;
+const ImageSliderOneGame = ({  current, setCurrent, oneGame }) => {
+  const length = oneGame.screenshots.length;
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
-  if (!Array.isArray(slides) || slides.length <= 0) {
+  if (!Array.isArray(oneGame.screenshots) || oneGame.screenshots.length <= 0) {
     return null;
   }
+  console.log('oneGame', oneGame)
 
   return (
     <div className="sliderOneGame">
@@ -43,7 +43,7 @@ const ImageSliderOneGame = ({ slides, current, setCurrent }) => {
         }}
         className="slide"
       >
-        {SliderData.map((slide, index) => {
+        {oneGame.screenshots.map((slide, index) => {
           return (
             <div
               key={index}
@@ -53,7 +53,7 @@ const ImageSliderOneGame = ({ slides, current, setCurrent }) => {
                 left: `${index * 100}%`,
                 width: '100%',
                 height: '100%',
-                backgroundImage: `url(${slide.image})`,
+                backgroundImage: `url(${slide.path_thumbnail})`,
               }}
             />
           );

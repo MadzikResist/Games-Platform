@@ -29,7 +29,7 @@ const PopularGames = () => {
     <div className="containerGamesDashboard">
     {listGames.map((dataObj) =>  {
     return (
-        <Link to={`/game/${dataObj.id}`}>
+        <Link to={`/game/${dataObj.id}`} style={{textDecoration: 'none'}}>
           <div className="popularGames"  key={dataObj.id}>
               <div className="shopButton">Go to the Store</div>
                 <div className="gameBlur" style={{backgroundImage: `url(${dataObj.header_image})`}}></div>

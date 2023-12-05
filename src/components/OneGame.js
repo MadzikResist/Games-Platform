@@ -3,16 +3,14 @@ import '../oneGameStyle.css'
 import '../index.css'
 import Navbar from './Navbar';
 import ImageSliderOneGame from './ImageSliderOneGame';
-import {SliderData} from './SliderData';
 import {Pegi} from './Pegi'
-import cyberpunk2 from '../cyberpunk2.jpg'
 import {useParams} from "react-router-dom";
+import loading from "../loading.gif";
 const OneGame = () => {
   const [current, setCurrent] = useState(0);
   const [oneGame, setOneGame] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const {id} = useParams();
-  console.log("id:", id)
   useEffect(() => {
     (async () => {
       try {
@@ -37,7 +35,26 @@ const OneGame = () => {
       setIsLoading(false)
     })()
 
-  }, []);
+  }, [id]);
+  const fitAge = (required_age) => {
+      if(required_age > 3 && required_age < 8){
+          return Pegi['7']
+      }
+      if(required_age > 7 && required_age < 13){
+          return Pegi['12']
+      }
+      if(required_age > 12 && required_age < 17){
+          return Pegi['16']
+      }
+      if(required_age >= 0 && required_age < 4){
+          return Pegi['3']
+      }
+      return Pegi['18']
+  }
+    if(isLoading){
+        return <img src={loading} alt="Loading..." style={{width: '200px', paddingLeft: "40px" }}
+        />
+    }
   return(
     <div className="oneGameContainer">
       <div className="navbar">
@@ -47,12 +64,12 @@ const OneGame = () => {
     {/*    return (*/}
           <>
       <div className="mainGameContainerOneGame"   >
-          <div style={{width: '100%', height: '100%',  filter: 'blur(20px)', position: 'absolute', backgroundImage: `url(${cyberpunk2})`}}></div>
+          <div style={{width: '100%', height: '100%',  filter: 'blur(20px) brightness(50%)', position: 'absolute', backgroundImage: `url(${oneGame.screenshots[0].path_thumbnail})`, backgroundPosition: 'center', backgroundRepeat: "no-repeat", backgroundSize: 'cover',}}></div>
           <div className="oneGameTitleContainer">
             <div className="oneGameTitle">{oneGame.name}</div>
             <div className="titleInfo">
               <div className="elementInfoOneGame">
-                <div className="recommendations">665</div>
+                <div className="recommendations">{oneGame.recommendations.total}</div>
                 <div className="infoText">Recommendations</div>
               </div>
               <div className="elementInfoOneGame">
@@ -60,33 +77,49 @@ const OneGame = () => {
                 <div className="infoText">Zniżki</div>
               </div>
             </div>
-            <div className="oneGameDescription">After the sudden death of your father you come back to your hometown and move to a new home to live with Liza, Bella, Rachel and Susan. Will you discover their personalities and secrets and maybe even develop romantic relationships with several of the girls?</div>
+            <div className="oneGameDescription">{oneGame.short_description}</div>
             <div className="buttonsContainer">
               <div className="buyButtonOneGame">Buy 199,99 $</div>
               <div className="listButtonOneGame">♥</div>
             </div>
           </div>
           <div className="sliderContainerOneGame">
-            <ImageSliderOneGame slides={SliderData} current={current} setCurrent={setCurrent}/>
-            <div className="oneGameDotsContainer">
-              {SliderData.map((slide, index) => {
-                return(
-                  <div className="dotsOneGame" style={{border: current === index ? '2px solid white' : '#242730', backgroundImage: `url(${slide.image})`
-                  }} key={index} onClick={()=> setCurrent(index)}
-                  />
-                );
-              })}
-            </div>
+            <ImageSliderOneGame  current={current} setCurrent={setCurrent} oneGame={oneGame}/>
+              <div className="oneGameDotsOuterContainer">
+                <div className="oneGameDotsContainer">
+                  {oneGame.screenshots.map((slide, index) => {
+                    return(
+                      <div className="dotsOneGame" style={{border: current === index ? '2px solid white' : '#242730', backgroundImage: `url(${slide.path_thumbnail})`, transform: current > 5 ?`translateX(-${(current-5) * 116}px)` : "translateX(0)"
+                      }}  key={index} onClick={()=> setCurrent(index)}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
             </div>
         </div>
       <div className="additionalInfoOneGame">
-        <div className="pegiSymbol" style={{backgroundImage: `url(${Pegi[3].image})`}}></div>
-        <div className="pegiInfo">{Pegi[3].name}</div>
+        <div className="pegiSymbol" style={{backgroundImage: `url(${fitAge(oneGame.required_age).image}`}}></div>
+        <div className="pegiInfo">{fitAge(oneGame.required_age).name}</div>
       </div>
       <div className="containerInformationsOneGame">
         <div className="informationsText">Informations</div>
         <div className="boxInfotmationsContainer">
-          <div className="boxInfotmations">Publishers:</div>
+          <div className="boxInfotmations">
+              <div className="elementBoxOneGame">
+                  <div className="oneGameTitleInfo">Publisher:</div>
+                  <div className="oneGameFullDesc">{oneGame.publishers[0]}</div>
+              </div>
+              <div className="elementBoxOneGame">
+                  <div className="oneGameTitleInfo">Release Date:</div>
+                  <div className="oneGameFullDesc">{oneGame.release_date.date}</div>
+              </div>
+              <div className="elementBoxOneGame">
+                  <div className="oneGameTitleInfo">Available space</div>
+                  <div className="oneGameFullDesc">26,1 GB</div>
+              </div>
+
+          </div>
           <div className="boxInfotmations"></div>
           </div>
       </div>
