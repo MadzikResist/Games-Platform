@@ -4,6 +4,7 @@
     height: 100vh;
     background-color: #0a0d16;
     overflow-x: hidden;
+    padding-bottom: 0;
 }
 .sliderOneGame{
     position: relative;
@@ -147,6 +148,8 @@
     justify-content: space-between;
     margin-top: 32px;
     width: 50%;
+    flex-wrap: wrap;
+    gap: 16px
 }
 .elementInfoOneGame{
     display: flex;
@@ -168,7 +171,6 @@
 }
 .infoText{
     color: white;
-
 }
 .pegiSymbol{
     width: 50px;
@@ -186,6 +188,7 @@
 }
 .containerInformationsOneGame{
     padding: 0 80px;
+    margin-bottom: 100px;
 }
 .informationsText{
     color: white;
@@ -194,8 +197,7 @@
 .boxInfotmationsContainer{
     width: 100%;
     display: flex;
-    gap: 16px;
-
+    gap: 24px;
 }
 .boxInfotmations{
     width: 100%;
@@ -204,12 +206,40 @@
     margin-top: 16px;
     padding: 16px 16px;
     color: white;
+    gap: 24px;
     display: flex;
-    gap: 24px
+    flex-direction: column;
+    align-self: flex-start;
+    position: relative;
+
+
+}
+.boxInfotmationsPlatform{
+    width: 100%;
+    align-self: flex-start;
+    background-color: #1a1e2c;
+    border-radius: 8px;
+    margin-top: 16px;
+    padding: 16px 16px;
+    color: white;
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+}
+.elementBoxOneGameContainer{
+    display: flex;
+    width: 100%;
+    color: white;
+    gap: 24px;
+    margin-bottom: 16px;
 }
 .elementBoxOneGame{
 
-
+}
+.elementBoxOneGamePlatform{
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 .oneGameTitleInfo{
     opacity: 50%;
@@ -218,4 +248,42 @@
 }
 .oneGameFullDesc{
     font-size: 18px;
+}
+.oneGameFullDescBox{
+    color: #afb3b7;
+    line-height: 24px;
+}
+.showMoreButon{
+    align-self: center;
+    justify-self: center;
+    text-decoration: underline;
+    z-Index: 20;
+    color: #afb3b7;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+.informationsTextBox{
+    font-size: 18px;
+    color: white;
+    margin-top: 16px;
+}
+.boxElementPlatform{
+    padding: 8px 16px;
+    background-color: #3a3e45;
+    color: white;
+    border-radius: 16px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.elementBoxOneGameContainerPlatform{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 16px;
+    margin-bottom: 16px;
 }

@@ -1,0 +1,56 @@
+.navChosen {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.searchAvatar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+.user {
+  background-image: url(user.png);
+  width: 25px;
+  height: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 15;
+}
+.navText {
+  color: #7a7f94;
+  font-weight: 800;
+  cursor: pointer;
+}
+.navText:hover {
+  color: white;
+}
+.navButtons {
+  display: flex;
+  align-items: center;
+  margin-left: 120px;
+  width: 33%;
+  z-index: 15;
+  gap: 64px;
+}
+.navBall {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fe4300;
+}
+.navGradient {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(
+    to bottom,
+    rgba(254, 67, 0, 0.01),
+    rgba(254, 67, 0, 0.8)
+  );
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+}

@@ -1,11 +1,10 @@
-import Navbar from './Navbar';
-import ImageSlider from './ImageSlider';
-import { SliderData } from './SliderData';
-import {useState} from 'react';
+import Navbar from "./Navbar";
+import ImageSlider from "./ImageSlider";
+import { SliderData } from "./SliderData";
+import { useState } from "react";
 import PopularGames from "./PopularGames";
 const Dashboard = () => {
   const [current, setCurrent] = useState(0);
-
 
   return (
     <div className="dashboardContainer">
@@ -31,7 +30,11 @@ const Dashboard = () => {
             <div className="preOrderButton">Pre-order</div>
           </div>
         </div>
-        <ImageSlider slides={SliderData} current={current} setCurrent={setCurrent}/>
+        <ImageSlider
+          slides={SliderData}
+          current={current}
+          setCurrent={setCurrent}
+        />
       </div>
       <div className="popularGamesDots">
         <div className="popularGameTextPad">
@@ -48,14 +51,20 @@ const Dashboard = () => {
           <div className="popularGamesText">POPULAR GAMES</div>
         </div>
         <div className="dotsContainer">
-        {SliderData.map((_, index) => {
-          return(
-            <div className="dots" style={{backgroundColor: current === index ? '#fe4300' : '#242730'}} key={index}/>
-          );
-        })}
+          {SliderData.map((_, index) => {
+            return (
+              <div
+                className="dots"
+                style={{
+                  backgroundColor: current === index ? "#fe4300" : "#242730",
+                }}
+                key={index}
+              />
+            );
+          })}
         </div>
       </div>
-      <PopularGames/>
+      <PopularGames />
     </div>
   );
 };
