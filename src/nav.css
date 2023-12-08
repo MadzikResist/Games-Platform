@@ -24,6 +24,7 @@
   color: #7a7f94;
   font-weight: 800;
   cursor: pointer;
+  text-decoration: none;
 }
 .navText:hover {
   color: white;

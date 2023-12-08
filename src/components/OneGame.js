@@ -69,6 +69,7 @@ const OneGame = () => {
   return (
     <div className="oneGameContainer">
       <div className="navbar">
+        <div className="mainGameContainerGradientLeft"></div>
         <Navbar />
       </div>
       <>
@@ -207,10 +208,10 @@ const OneGame = () => {
               <div className="elementBoxOneGameContainerPlatform">
                 <div className="informationsTextBox">Categories</div>
                 <div className="elementBoxOneGamePlatform">
-                  {oneGame.categories.map((categorie, index) => {
+                  {oneGame.categories.map((category, index) => {
                     return (
                       <div className="boxElementPlatform">
-                        {categorie.description}
+                        {category.description}
                       </div>
                     );
                   })}

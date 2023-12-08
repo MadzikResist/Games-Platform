@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../nav.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const currentURL = window.location.href;
@@ -7,16 +8,15 @@ const Navbar = () => {
   useEffect(() => {
     if (currentURL.includes("store")) {
       setCurrentElement("store");
-    }
-    if (currentURL.includes("library")) {
+    } else if (currentURL.includes("library")) {
       setCurrentElement("library");
-    }
-    if (currentURL.includes("home")) {
+    } else if (currentURL === "http://localhost:3000/") {
       setCurrentElement("home");
     } else {
-      return setCurrentElement("");
+      setCurrentElement("");
     }
   }, [currentURL]);
+  console.log("currenturl", currentURL);
   return (
     <div className="navbarContainer">
       <div className="logoContainer">
@@ -28,23 +28,31 @@ const Navbar = () => {
             <div className="navChosen">
               <div className="navGradient" />
               <div className="navBall" />
-              <div className="navText" style={{ color: "white" }}>
+              <Link to={`/`} className="navText" style={{ color: "white" }}>
                 HOME
-              </div>
+              </Link>
             </div>
           ) : (
-            <div className="navText">HOME</div>
+            <Link to={`/`} className="navText">
+              HOME
+            </Link>
           )}
           {currentElement === "store" ? (
             <div className="navChosen">
               <div className="navGradient" />
               <div className="navBall" />
-              <div className="navText" style={{ color: "white" }}>
+              <Link
+                to={`/store`}
+                className="navText"
+                style={{ color: "white" }}
+              >
                 STORE
-              </div>
+              </Link>
             </div>
           ) : (
-            <div className="navText">STORE</div>
+            <Link to={`/store`} className="navText">
+              STORE
+            </Link>
           )}
           {currentElement === "library" ? (
             <div className="navChosen">
