@@ -2,7 +2,6 @@ import Navbar from "./Navbar";
 import "../store.css";
 import React, { useEffect, useState } from "react";
 import DropDown from "./DropDown";
-import PopularGames from "./PopularGames";
 import loading from "../loading.gif";
 import { Link } from "react-router-dom";
 const Store = () => {
@@ -37,11 +36,18 @@ const Store = () => {
 
   if (isLoading) {
     return (
-      <img
-        src={loading}
-        alt="Loading..."
-        style={{ width: "200px", paddingLeft: "40px" }}
-      />
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "#0a0d16",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <img src={loading} alt="Loading..." style={{ width: "200px" }} />
+      </div>
     );
   }
 
@@ -54,6 +60,19 @@ const Store = () => {
         </div>
         <div className="gamesAndSort">
           <div className="gamesText">Games</div>
+          <div className="searchStore">
+            <div className="searchIconStore">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="1em"
+                fill="white"
+                viewBox="0 0 512 512"
+              >
+                <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+              </svg>
+            </div>
+            <input className="input" type="text" placeholder="Find game..." />
+          </div>
           <div className="sortSelect">
             <div className="sortByText">Sort by</div>
             <DropDown options={options} />

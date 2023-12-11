@@ -5,10 +5,13 @@
     align-items: center;
     justify-content: space-between;
     padding: 40px;
+    position: relative;
 }
 .gamesText{
     font-size: 24px;
     font-weight: bold;
+    width: 200px;
+
 }
 .sortByText{
     font-size: 20px;
@@ -120,4 +123,33 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px 75px
+}
+.searchStore{
+    height: 40px;
+    width: 400px;
+    background-color: #24262a;
+    margin-right: 50px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4px;
+    z-index: 15;
+    position: absolute;
+    left: 400px;
+    top: 40px
+
+}
+.searchIconStore{
+    width: 40px;
+    height: 32px;
+    background-color: transparent;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+}
+.input::placeholder {
+    font-weight: 600;
 }
