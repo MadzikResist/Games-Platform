@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 import "../store.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import DropDown from "./DropDown";
 import loading from "../loading.gif";
 import { Link } from "react-router-dom";
@@ -18,19 +18,90 @@ const Store = () => {
     { value: "titleZA", label: "Title Z-A" },
   ];
   const [listGames, setListGames] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
+  const [query, setQuery] = useState("");
+  const [offset, setOffset] = useState(0);
+  const observer = useRef();
+  const lastBookElementRef = useCallback(
+    (node) => {
+      if (isLoading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore && !isLoading) {
+          loadMore();
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [isLoading, hasMore, offset],
+  );
+  const handleSearch = (value) => {
+    setPageNumber(1);
+    fetchData(value);
+  };
+  const fetchData = async (value) => {
+    try {
+      const response = await fetch("http://localhost:8000/store", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: value, offset: 0 }),
+      });
+
+      const data = await response.json();
+      setListGames(data.games);
+      setHasMore(data.hasNextPage);
+      setIsLoading(false);
+      setQuery(value);
+      setOffset(data.offset);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  const loadMore = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/store", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: query, offset }),
+      });
+
+      const data = await response.json();
+      setListGames((prevState) => [...prevState, ...data.games]);
+      setHasMore(data.hasNextPage);
+      setIsLoading(false);
+      setOffset(data.offset);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch("http://localhost:8000/store");
+        setIsLoading(true);
+        const response = await fetch("http://localhost:8000/store", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         const data = await response.json();
-        setListGames(data);
-        console.log("test", data);
+        setListGames(data.games);
+        setHasMore(data.hasNextPage);
+        setOffset(data.offset);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     })();
   }, []);
 
@@ -71,7 +142,13 @@ const Store = () => {
                 <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
               </svg>
             </div>
-            <input className="input" type="text" placeholder="Find game..." />
+            <input
+              className="input"
+              type="text"
+              placeholder="Find game..."
+              value={query}
+              onChange={(e) => handleSearch(e.target.value)}
+            />
           </div>
           <div className="sortSelect">
             <div className="sortByText">Sort by</div>
@@ -91,36 +168,79 @@ const Store = () => {
           </div>
           <div className="games">
             <div className="containerGamesStore">
-              {listGames.map((dataObj) => {
-                return (
-                  <Link
-                    to={`/game/${dataObj.id}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <div className="popularGames" key={dataObj.id}>
-                      <div className="shopButton">Go to the Store</div>
-                      <div
-                        className="gameBlur"
-                        style={{
-                          backgroundImage: `url(${dataObj.header_image})`,
-                        }}
-                      ></div>
-                      <div
-                        className="gameDashboard"
-                        style={{
-                          backgroundImage: `url(${dataObj.header_image})`,
-                        }}
-                      />
-                      <div className="popularGameBar">
-                        <div className="popularGameTitle">{dataObj.name}</div>
-                        <div className="popularGamePublisher">
-                          {dataObj.publishers}
+              {listGames.length ? (
+                listGames.map((dataObj, index) => {
+                  if (listGames.length === index + 1) {
+                    return (
+                      <Link
+                        to={`/game/${dataObj.id}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <div
+                          className="popularGames"
+                          ref={lastBookElementRef}
+                          key={dataObj.id}
+                        >
+                          <div className="shopButton">Go to the Store</div>
+                          <div
+                            className="gameBlur"
+                            style={{
+                              backgroundImage: `url(${dataObj.header_image})`,
+                            }}
+                          ></div>
+                          <div
+                            className="gameDashboard"
+                            style={{
+                              backgroundImage: `url(${dataObj.header_image})`,
+                            }}
+                          />
+                          <div className="popularGameBar">
+                            <div className="popularGameTitle">
+                              {dataObj.name}
+                            </div>
+                            <div className="popularGamePublisher">
+                              {dataObj.publishers}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
+                      </Link>
+                    );
+                  } else {
+                    return (
+                      <Link
+                        to={`/game/${dataObj.id}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <div className="popularGames" key={dataObj.id}>
+                          <div className="shopButton">Go to the Store</div>
+                          <div
+                            className="gameBlur"
+                            style={{
+                              backgroundImage: `url(${dataObj.header_image})`,
+                            }}
+                          ></div>
+                          <div
+                            className="gameDashboard"
+                            style={{
+                              backgroundImage: `url(${dataObj.header_image})`,
+                            }}
+                          />
+                          <div className="popularGameBar">
+                            <div className="popularGameTitle">
+                              {dataObj.name}
+                            </div>
+                            <div className="popularGamePublisher">
+                              {dataObj.publishers}
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  }
+                })
+              ) : (
+                <div className="gameNotFound">Game not found</div>
+              )}
             </div>
           </div>
         </div>

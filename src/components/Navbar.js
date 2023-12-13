@@ -16,7 +16,6 @@ const Navbar = () => {
       setCurrentElement("");
     }
   }, [currentURL]);
-  console.log("currenturl", currentURL);
   return (
     <div className="navbarContainer">
       <div className="logoContainer">
