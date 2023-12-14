@@ -19,14 +19,13 @@ const Store = () => {
   ];
   const [listGames, setListGames] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [pageNumber, setPageNumber] = useState(1);
   const [hasMore, setHasMore] = useState(false);
   const [query, setQuery] = useState("");
   const [offset, setOffset] = useState(0);
   const observer = useRef();
   const lastBookElementRef = useCallback(
     (node) => {
-      if (isLoading) return;
+      // if (isLoading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore && !isLoading) {
@@ -35,10 +34,10 @@ const Store = () => {
       });
       if (node) observer.current.observe(node);
     },
-    [isLoading, hasMore, offset],
+    // eslint-disable-next-line
+    [hasMore, offset, isLoading],
   );
   const handleSearch = (value) => {
-    setPageNumber(1);
     fetchData(value);
   };
   const fetchData = async (value) => {
@@ -152,7 +151,7 @@ const Store = () => {
           </div>
           <div className="sortSelect">
             <div className="sortByText">Sort by</div>
-            <DropDown options={options} />
+            <DropDown />
           </div>
         </div>
         <div className="filtersGames">
@@ -172,69 +171,72 @@ const Store = () => {
                 listGames.map((dataObj, index) => {
                   if (listGames.length === index + 1) {
                     return (
-                      <Link
-                        to={`/game/${dataObj.id}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <div
-                          className="popularGames"
-                          ref={lastBookElementRef}
-                          key={dataObj.id}
+                      <div key={dataObj.id}>
+                        <Link
+                          to={`/game/${dataObj.id}`}
+                          style={{ textDecoration: "none" }}
                         >
-                          <div className="shopButton">Go to the Store</div>
                           <div
-                            className="gameBlur"
-                            style={{
-                              backgroundImage: `url(${dataObj.header_image})`,
-                            }}
-                          ></div>
-                          <div
-                            className="gameDashboard"
-                            style={{
-                              backgroundImage: `url(${dataObj.header_image})`,
-                            }}
-                          />
-                          <div className="popularGameBar">
-                            <div className="popularGameTitle">
-                              {dataObj.name}
-                            </div>
-                            <div className="popularGamePublisher">
-                              {dataObj.publishers}
+                            className="popularGames"
+                            ref={lastBookElementRef}
+                          >
+                            <div className="shopButton">Go to the Store</div>
+                            <div
+                              className="gameBlur"
+                              style={{
+                                backgroundImage: `url(${dataObj.header_image})`,
+                              }}
+                            ></div>
+                            <div
+                              className="gameDashboard"
+                              style={{
+                                backgroundImage: `url(${dataObj.header_image})`,
+                              }}
+                            />
+                            <div className="popularGameBar">
+                              <div className="popularGameTitle">
+                                {dataObj.name}
+                              </div>
+                              <div className="popularGamePublisher">
+                                {dataObj.publishers}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </Link>
+                        </Link>
+                      </div>
                     );
                   } else {
                     return (
-                      <Link
-                        to={`/game/${dataObj.id}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <div className="popularGames" key={dataObj.id}>
-                          <div className="shopButton">Go to the Store</div>
-                          <div
-                            className="gameBlur"
-                            style={{
-                              backgroundImage: `url(${dataObj.header_image})`,
-                            }}
-                          ></div>
-                          <div
-                            className="gameDashboard"
-                            style={{
-                              backgroundImage: `url(${dataObj.header_image})`,
-                            }}
-                          />
-                          <div className="popularGameBar">
-                            <div className="popularGameTitle">
-                              {dataObj.name}
-                            </div>
-                            <div className="popularGamePublisher">
-                              {dataObj.publishers}
+                      <div key={dataObj.id}>
+                        <Link
+                          to={`/game/${dataObj.id}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <div className="popularGames" key={dataObj.id}>
+                            <div className="shopButton">Go to the Store</div>
+                            <div
+                              className="gameBlur"
+                              style={{
+                                backgroundImage: `url(${dataObj.header_image})`,
+                              }}
+                            ></div>
+                            <div
+                              className="gameDashboard"
+                              style={{
+                                backgroundImage: `url(${dataObj.header_image})`,
+                              }}
+                            />
+                            <div className="popularGameBar">
+                              <div className="popularGameTitle">
+                                {dataObj.name}
+                              </div>
+                              <div className="popularGamePublisher">
+                                {dataObj.publishers}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </Link>
+                        </Link>
+                      </div>
                     );
                   }
                 })

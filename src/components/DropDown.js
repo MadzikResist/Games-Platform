@@ -1,7 +1,7 @@
 import { useState } from "react";
-
-const DropDown = ({ options }) => {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+import { categories } from "../const/categories";
+const DropDown = () => {
+  const [selectedOption, setSelectedOption] = useState(categories[0]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const handleOptionChange = (option) => {
     setSelectedOption(option);
@@ -23,7 +23,7 @@ const DropDown = ({ options }) => {
         }}
       >
         {isDropdownOpen ? <div className="oragneElement" /> : null}
-        {selectedOption.label}
+        {selectedOption}
         <div className="arrow">
           {isDropdownOpen ? (
             <svg
@@ -50,17 +50,17 @@ const DropDown = ({ options }) => {
       </div>
       {isDropdownOpen && (
         <ul className="options-list">
-          {options.map(
+          {categories.map(
             (option) =>
-              option.value !== selectedOption.value && (
+              option !== selectedOption && (
                 <li
-                  key={option.value}
+                  key={option}
                   className={`option ${
-                    selectedOption.value === option.value ? "selected" : ""
+                    selectedOption === option ? "selected" : ""
                   }`}
                   onClick={() => handleOptionChange(option)}
                 >
-                  {option.label}
+                  {option}
                 </li>
               ),
           )}
