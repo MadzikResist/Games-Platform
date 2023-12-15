@@ -208,10 +208,10 @@ const OneGame = () => {
               <div className="elementBoxOneGameContainerPlatform">
                 <div className="informationsTextBox">Categories</div>
                 <div className="elementBoxOneGamePlatform">
-                  {oneGame.categories.map((category, index) => {
+                  {oneGame?.categories?.map((category, index) => {
                     return (
                       <div className="boxElementPlatform">
-                        {category.description}
+                        {category?.description}
                       </div>
                     );
                   })}

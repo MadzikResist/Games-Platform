@@ -1,4 +1,5 @@
 export const categories = [
+  "Any",
   "Single-player",
   "Steam Achievements",
   "Steam Trading Cards",

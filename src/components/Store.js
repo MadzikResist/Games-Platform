@@ -4,24 +4,17 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import DropDown from "./DropDown";
 import loading from "../loading.gif";
 import { Link } from "react-router-dom";
+import { categories } from "../const/categories";
+import { genres } from "../const/genres";
+
 const Store = () => {
-  const options = [
-    { value: "recommendations", label: "Recommendations" },
-    { value: "titleAZ", label: "Title A-Z" },
-    { value: "titleZA", label: "Title Z-A" },
-  ];
-  const genres = [
-    { value: "geen", label: "geen" },
-    { value: "titleAZ", label: "Title A-Z" },
-    { value: "titleZA", label: "Title Z-A" },
-    { value: "titleZA", label: "Title Z-A" },
-    { value: "titleZA", label: "Title Z-A" },
-  ];
   const [listGames, setListGames] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(false);
   const [query, setQuery] = useState("");
   const [offset, setOffset] = useState(0);
+  const [option, setOption] = useState("");
+  const [filter, setFilter] = useState("");
   const observer = useRef();
   const lastBookElementRef = useCallback(
     (node) => {
@@ -40,7 +33,7 @@ const Store = () => {
   const handleSearch = (value) => {
     fetchData(value);
   };
-  const fetchData = async (value) => {
+  const fetchData = async (value, option, filter) => {
     try {
       const response = await fetch("http://localhost:8000/store", {
         method: "POST",
@@ -48,9 +41,13 @@ const Store = () => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text: value, offset: 0 }),
+        body: JSON.stringify({
+          text: value,
+          offset: 0,
+          option,
+          filter,
+        }),
       });
-
       const data = await response.json();
       setListGames(data.games);
       setHasMore(data.hasNextPage);
@@ -69,7 +66,12 @@ const Store = () => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text: query, offset }),
+        body: JSON.stringify({
+          text: query,
+          offset,
+          filter,
+          option,
+        }),
       });
 
       const data = await response.json();
@@ -120,6 +122,11 @@ const Store = () => {
       </div>
     );
   }
+  const handleChildData = async (option, filter) => {
+    setOption(option);
+    setFilter(filter);
+    await fetchData("", option, filter);
+  };
 
   return (
     <div className="oneGameContainer">
@@ -151,7 +158,7 @@ const Store = () => {
           </div>
           <div className="sortSelect">
             <div className="sortByText">Sort by</div>
-            <DropDown />
+            <DropDown options={categories} />
           </div>
         </div>
         <div className="filtersGames">
@@ -159,11 +166,19 @@ const Store = () => {
             Filters
             <div className="hr"></div>
             <div className="genres">Genre</div>
-            <DropDown options={genres} />
+            <DropDown
+              options={genres}
+              onDataUpdate={handleChildData}
+              nameFilter="genres"
+            />
             <div className="genres" style={{ marginTop: "32px" }}>
               Category
             </div>
-            <DropDown options={genres} />
+            <DropDown
+              options={categories}
+              onDataUpdate={handleChildData}
+              setFilter="categories"
+            />
           </div>
           <div className="games">
             <div className="containerGamesStore">

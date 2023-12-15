@@ -1,15 +1,31 @@
-import { useState } from "react";
-import { categories } from "../const/categories";
-const DropDown = () => {
-  const [selectedOption, setSelectedOption] = useState(categories[0]);
+import { useEffect, useRef, useState } from "react";
+
+const DropDown = ({ options, onDataUpdate, nameFilter }) => {
+  const [selectedOption, setSelectedOption] = useState(options[0]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [dropdownRef]);
+
   const handleOptionChange = (option) => {
     setSelectedOption(option);
     setIsDropdownOpen(false);
+    onDataUpdate(option, nameFilter);
   };
   return (
     <div
       className="dropdown-container"
+      ref={dropdownRef}
       style={{
         borderRadius: isDropdownOpen ? 0 : "4px",
         zIndex: isDropdownOpen ? "20" : "0",
@@ -50,7 +66,7 @@ const DropDown = () => {
       </div>
       {isDropdownOpen && (
         <ul className="options-list">
-          {categories.map(
+          {options.map(
             (option) =>
               option !== selectedOption && (
                 <li
