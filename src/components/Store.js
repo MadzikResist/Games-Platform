@@ -6,6 +6,7 @@ import loading from "../loading.gif";
 import { Link } from "react-router-dom";
 import { categories } from "../const/categories";
 import { genres } from "../const/genres";
+import { sortBy } from "../const/sortBy";
 
 const Store = () => {
   const [listGames, setListGames] = useState([]);
@@ -158,7 +159,11 @@ const Store = () => {
           </div>
           <div className="sortSelect">
             <div className="sortByText">Sort by</div>
-            <DropDown options={categories} />
+            <DropDown
+              options={sortBy}
+              onDataUpdate={handleChildData}
+              nameFilter="sortBy"
+            />
           </div>
         </div>
         <div className="filtersGames">
@@ -177,7 +182,7 @@ const Store = () => {
             <DropDown
               options={categories}
               onDataUpdate={handleChildData}
-              setFilter="categories"
+              nameFilter="categories"
             />
           </div>
           <div className="games">
