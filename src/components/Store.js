@@ -15,6 +15,9 @@ const Store = () => {
   const [query, setQuery] = useState("");
   const [offset, setOffset] = useState(0);
   const [option, setOption] = useState("");
+  const [category, setCategory] = useState(categories[0]);
+  const [genre, setGenre] = useState(genres[0]);
+  const [selectedSortBy, setSortBy] = useState(sortBy[0]);
   const [filter, setFilter] = useState("");
   const observer = useRef();
   const lastBookElementRef = useCallback(
@@ -29,12 +32,15 @@ const Store = () => {
       if (node) observer.current.observe(node);
     },
     // eslint-disable-next-line
-    [hasMore, offset, isLoading],
+    [hasMore, offset, isLoading, filter, option, selectedSortBy],
   );
   const handleSearch = (value) => {
     fetchData(value);
   };
   const fetchData = async (value, option, filter) => {
+    console.log("selectedSortBy test1", selectedSortBy);
+    console.log("option", option);
+
     try {
       const response = await fetch("http://localhost:8000/store", {
         method: "POST",
@@ -47,6 +53,7 @@ const Store = () => {
           offset: 0,
           option,
           filter,
+          sortBy: selectedSortBy,
         }),
       });
       const data = await response.json();
@@ -55,10 +62,26 @@ const Store = () => {
       setIsLoading(false);
       setQuery(value);
       setOffset(data.offset);
+      console.log("selectedSortBy", selectedSortBy);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
+  useEffect(() => {
+    let filterTemp;
+    let optionTemp;
+    if (genre !== "Any") {
+      filterTemp = "genres";
+      optionTemp = genre;
+    } else if (category !== "Any") {
+      filterTemp = "categories";
+      optionTemp = category;
+    }
+    console.log("genre || category", genre || category);
+    console.log("category", category);
+    console.log("filterTemp", filterTemp);
+    fetchData(undefined, optionTemp, filterTemp);
+  }, [selectedSortBy]);
   const loadMore = async () => {
     try {
       const response = await fetch("http://localhost:8000/store", {
@@ -70,8 +93,9 @@ const Store = () => {
         body: JSON.stringify({
           text: query,
           offset,
-          filter,
           option,
+          filter,
+          sortBy: selectedSortBy,
         }),
       });
 
@@ -106,7 +130,14 @@ const Store = () => {
       }
     })();
   }, []);
-
+  useEffect(() => {
+    console.log(filter);
+    if (filter === "categories") {
+      setGenre(genres[0]);
+    } else if (filter === "genres") {
+      setCategory(categories[0]);
+    }
+  }, [genre, category]);
   if (isLoading) {
     return (
       <div
@@ -126,6 +157,8 @@ const Store = () => {
   const handleChildData = async (option, filter) => {
     setOption(option);
     setFilter(filter);
+
+    console.log("value", selectedSortBy);
     await fetchData("", option, filter);
   };
 
@@ -162,7 +195,9 @@ const Store = () => {
             <DropDown
               options={sortBy}
               onDataUpdate={handleChildData}
-              nameFilter="sortBy"
+              value={selectedSortBy}
+              setValue={setSortBy}
+              method="sort"
             />
           </div>
         </div>
@@ -174,7 +209,9 @@ const Store = () => {
             <DropDown
               options={genres}
               onDataUpdate={handleChildData}
-              nameFilter="genres"
+              filter="genres"
+              value={genre}
+              setValue={setGenre}
             />
             <div className="genres" style={{ marginTop: "32px" }}>
               Category
@@ -182,7 +219,9 @@ const Store = () => {
             <DropDown
               options={categories}
               onDataUpdate={handleChildData}
-              nameFilter="categories"
+              value={category}
+              filter="categories"
+              setValue={setCategory}
             />
           </div>
           <div className="games">

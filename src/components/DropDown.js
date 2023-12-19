@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 
-const DropDown = ({ options, onDataUpdate, nameFilter }) => {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+const DropDown = ({
+  options,
+  onDataUpdate,
+  value,
+  setValue,
+  filter,
+  method,
+}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-  console.log("selectedOp", selectedOption);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -16,11 +22,13 @@ const DropDown = ({ options, onDataUpdate, nameFilter }) => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [dropdownRef]);
-
   const handleOptionChange = (option) => {
-    setSelectedOption(option);
+    setValue(option);
     setIsDropdownOpen(false);
-    onDataUpdate(option, nameFilter);
+    if (method === "sort") {
+      return;
+    }
+    onDataUpdate(option, filter, value);
   };
   return (
     <div
@@ -39,7 +47,7 @@ const DropDown = ({ options, onDataUpdate, nameFilter }) => {
         }}
       >
         {isDropdownOpen ? <div className="oragneElement" /> : null}
-        {selectedOption}
+        {value}
         <div className="arrow">
           {isDropdownOpen ? (
             <svg
@@ -67,16 +75,14 @@ const DropDown = ({ options, onDataUpdate, nameFilter }) => {
       {isDropdownOpen && (
         <ul
           className="options-list"
-          style={{ height: nameFilter === "sortBy" ? "90px" : "300px" }}
+          style={{ height: method === "sort" ? "90px" : "300px" }}
         >
           {options.map(
             (option) =>
-              option !== selectedOption && (
+              option !== value && (
                 <li
                   key={option}
-                  className={`option ${
-                    selectedOption === option ? "selected" : ""
-                  }`}
+                  className={`option ${value === option ? "selected" : ""}`}
                   onClick={() => handleOptionChange(option)}
                 >
                   {option}
