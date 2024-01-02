@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/MadzikResist/Games-Platform/static/css/main.c648afef.css",
-    "main.js": "/MadzikResist/Games-Platform/static/js/main.8ec4206e.js",
+    "main.js": "/MadzikResist/Games-Platform/static/js/main.d6570d84.js",
     "static/media/loading.gif": "/MadzikResist/Games-Platform/static/media/loading.9735ea8455bfe2b8cb75.gif",
     "static/media/pegi7.png": "/MadzikResist/Games-Platform/static/media/pegi7.7f9afa4d96250c8b2cdd.png",
     "static/media/pegi3.png": "/MadzikResist/Games-Platform/static/media/pegi3.8dbd8e81f66f49f5f160.png",
@@ -11,10 +11,10 @@
     "static/media/logo.png": "/MadzikResist/Games-Platform/static/media/logo.9571b25c536ec2bb1d84.png",
     "index.html": "/MadzikResist/Games-Platform/index.html",
     "main.c648afef.css.map": "/MadzikResist/Games-Platform/static/css/main.c648afef.css.map",
-    "main.8ec4206e.js.map": "/MadzikResist/Games-Platform/static/js/main.8ec4206e.js.map"
+    "main.d6570d84.js.map": "/MadzikResist/Games-Platform/static/js/main.d6570d84.js.map"
   },
   "entrypoints": [
     "static/css/main.c648afef.css",
-    "static/js/main.8ec4206e.js"
+    "static/js/main.d6570d84.js"
   ]
 }
