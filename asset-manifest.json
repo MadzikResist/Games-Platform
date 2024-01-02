@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "./static/css/main.02d162f8.css",
-    "main.js": "./static/js/main.62ad5392.js",
-    "static/media/loading.gif": "./static/media/loading.9735ea8455bfe2b8cb75.gif",
-    "static/media/pegi7.png": "./static/media/pegi7.7f9afa4d96250c8b2cdd.png",
-    "static/media/pegi3.png": "./static/media/pegi3.8dbd8e81f66f49f5f160.png",
-    "static/media/pegi18.png": "./static/media/pegi18.585045d930f8f70ae758.png",
-    "static/media/pegi12.png": "./static/media/pegi12.2469823ee9d5c132b06d.png",
-    "static/media/pegi16.png": "./static/media/pegi16.f1263f1d5588a1da3ad6.png",
-    "static/media/logo.png": "./static/media/logo.9571b25c536ec2bb1d84.png",
-    "index.html": "./index.html",
-    "main.02d162f8.css.map": "./static/css/main.02d162f8.css.map",
-    "main.62ad5392.js.map": "./static/js/main.62ad5392.js.map"
+    "main.css": "/Games-Platform/static/css/main.a5675a00.css",
+    "main.js": "/Games-Platform/static/js/main.1ed21c71.js",
+    "static/media/loading.gif": "/Games-Platform/static/media/loading.9735ea8455bfe2b8cb75.gif",
+    "static/media/pegi7.png": "/Games-Platform/static/media/pegi7.7f9afa4d96250c8b2cdd.png",
+    "static/media/pegi3.png": "/Games-Platform/static/media/pegi3.8dbd8e81f66f49f5f160.png",
+    "static/media/pegi18.png": "/Games-Platform/static/media/pegi18.585045d930f8f70ae758.png",
+    "static/media/pegi12.png": "/Games-Platform/static/media/pegi12.2469823ee9d5c132b06d.png",
+    "static/media/pegi16.png": "/Games-Platform/static/media/pegi16.f1263f1d5588a1da3ad6.png",
+    "static/media/logo.png": "/Games-Platform/static/media/logo.9571b25c536ec2bb1d84.png",
+    "index.html": "/Games-Platform/index.html",
+    "main.a5675a00.css.map": "/Games-Platform/static/css/main.a5675a00.css.map",
+    "main.1ed21c71.js.map": "/Games-Platform/static/js/main.1ed21c71.js.map"
   },
   "entrypoints": [
-    "static/css/main.02d162f8.css",
-    "static/js/main.62ad5392.js"
+    "static/css/main.a5675a00.css",
+    "static/js/main.1ed21c71.js"
   ]
 }
