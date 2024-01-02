@@ -9,7 +9,7 @@ const PopularGames = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch("http://localhost:8000/games");
+        const response = await fetch("https://games-platform-api.onrender.com/games");
         const data = await response.json();
         setListGames(data)
         console.log("test",data);

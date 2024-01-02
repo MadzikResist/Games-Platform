@@ -42,7 +42,7 @@ const Store = () => {
     console.log("option", option);
 
     try {
-      const response = await fetch("http://localhost:8000/store", {
+      const response = await fetch("https://games-platform-api.onrender.com/store", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -84,7 +84,7 @@ const Store = () => {
   }, [selectedSortBy]);
   const loadMore = async () => {
     try {
-      const response = await fetch("http://localhost:8000/store", {
+      const response = await fetch("https://games-platform-api.onrender.com/store", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -113,7 +113,7 @@ const Store = () => {
     (async () => {
       try {
         setIsLoading(true);
-        const response = await fetch("http://localhost:8000/store", {
+        const response = await fetch("https://games-platform-api.onrender.com/store", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
