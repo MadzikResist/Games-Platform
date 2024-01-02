@@ -1,6 +1,6 @@
 export const SliderData = [
   {
-    image: 'https://images6.alphacoders.com/132/1329877.png',
+    image: 'https://images8.alphacoders.com/131/1317813.png',
   },
   {
     image: 'https://images3.alphacoders.com/133/1333016.jpeg',
