@@ -1,12 +1,12 @@
-import Navbar from "./Navbar";
-import "../store.css";
+import Navbar from "../navbar/Navbar";
+import "./store.css";
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import DropDown from "./DropDown";
-import loading from "../loading.gif";
+import loading from "../../assets/loading.gif";
 import { Link } from "react-router-dom";
-import { categories } from "../const/categories";
-import { genres } from "../const/genres";
-import { sortBy } from "../const/sortBy";
+import { categories } from "../../const/categories";
+import { genres } from "../../const/genres";
+import { sortBy } from "../../const/sortBy";
 
 const Store = () => {
   const [listGames, setListGames] = useState([]);
@@ -38,31 +38,30 @@ const Store = () => {
     fetchData(value);
   };
   const fetchData = async (value, option, filter) => {
-    console.log("selectedSortBy test1", selectedSortBy);
-    console.log("option", option);
-
     try {
-      const response = await fetch("https://games-platform-api.onrender.com/store", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://games-platform-api.onrender.com/store",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            text: value,
+            offset: 0,
+            option,
+            filter,
+            sortBy: selectedSortBy,
+          }),
         },
-        body: JSON.stringify({
-          text: value,
-          offset: 0,
-          option,
-          filter,
-          sortBy: selectedSortBy,
-        }),
-      });
+      );
       const data = await response.json();
       setListGames(data.games);
       setHasMore(data.hasNextPage);
       setIsLoading(false);
       setQuery(value);
       setOffset(data.offset);
-      console.log("selectedSortBy", selectedSortBy);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -77,27 +76,27 @@ const Store = () => {
       filterTemp = "categories";
       optionTemp = category;
     }
-    console.log("genre || category", genre || category);
-    console.log("category", category);
-    console.log("filterTemp", filterTemp);
     fetchData(undefined, optionTemp, filterTemp);
   }, [selectedSortBy]);
   const loadMore = async () => {
     try {
-      const response = await fetch("https://games-platform-api.onrender.com/store", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://games-platform-api.onrender.com/store",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            text: query,
+            offset,
+            option,
+            filter,
+            sortBy: selectedSortBy,
+          }),
         },
-        body: JSON.stringify({
-          text: query,
-          offset,
-          option,
-          filter,
-          sortBy: selectedSortBy,
-        }),
-      });
+      );
 
       const data = await response.json();
       setListGames((prevState) => [...prevState, ...data.games]);
@@ -113,12 +112,15 @@ const Store = () => {
     (async () => {
       try {
         setIsLoading(true);
-        const response = await fetch("https://games-platform-api.onrender.com/store", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+        const response = await fetch(
+          "https://games-platform-api.onrender.com/store",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
           },
-        });
+        );
         const data = await response.json();
         setListGames(data.games);
         setHasMore(data.hasNextPage);
@@ -131,7 +133,6 @@ const Store = () => {
     })();
   }, []);
   useEffect(() => {
-    console.log(filter);
     if (filter === "categories") {
       setGenre(genres[0]);
     } else if (filter === "genres") {
@@ -158,7 +159,6 @@ const Store = () => {
     setOption(option);
     setFilter(filter);
 
-    console.log("value", selectedSortBy);
     await fetchData("", option, filter);
   };
 

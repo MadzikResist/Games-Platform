@@ -1,4 +1,5 @@
-import { SliderData } from './SliderData';
+import { sliderData } from "../../const/sliderData";
+import "./imageSlider.css";
 
 const ImageSlider = ({ slides, current, setCurrent }) => {
   const length = slides.length;
@@ -36,22 +37,18 @@ const ImageSlider = ({ slides, current, setCurrent }) => {
       </div>
       <div
         style={{
-          width: '100%',
-          height: '100%',
           transform: `translateX(-${current * 100}%)`,
         }}
         className="slide"
       >
-        {SliderData.map((slide, index) => {
+        {sliderData.map((slide, index) => {
           return (
             <div
               key={index}
               className="imageSlider"
               style={{
-                position: 'absolute',
+                position: "absolute",
                 left: `${index * 100}%`,
-                width: '100%',
-                height: '100%',
                 backgroundImage: `url(${slide.image})`,
               }}
             />

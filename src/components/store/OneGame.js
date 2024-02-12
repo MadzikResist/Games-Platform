@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "../oneGameStyle.css";
-import "../index.css";
-import Navbar from "./Navbar";
-import ImageSliderOneGame from "./ImageSliderOneGame";
-import { Pegi } from "./Pegi";
+import "./oneGameStyle.css";
+import "../../index.css";
+import Navbar from "../navbar/Navbar";
+import ImageSliderOneGame from "../imageSlider/ImageSliderOneGame";
+import { pegi } from "../../const/pegi";
 import { useParams } from "react-router-dom";
-import loading from "../loading.gif";
+import loading from "../../assets/loading.gif";
 const OneGame = () => {
   const [current, setCurrent] = useState(0);
   const [oneGame, setOneGame] = useState({});
@@ -16,19 +16,21 @@ const OneGame = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch("https://games-platform-api.onrender.com/game/", {
-          method: "POST",
-          body: JSON.stringify({
-            id,
-          }),
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
+        const response = await fetch(
+          "https://games-platform-api.onrender.com/game/",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              id,
+            }),
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
           },
-        });
+        );
         const oneGame = await response.json();
         setOneGame(oneGame);
-        console.log("test", oneGame);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -37,18 +39,18 @@ const OneGame = () => {
   }, [id]);
   const fitAge = (required_age) => {
     if (required_age > 3 && required_age < 8) {
-      return Pegi["7"];
+      return pegi["7"];
     }
     if (required_age > 7 && required_age < 13) {
-      return Pegi["12"];
+      return pegi["12"];
     }
     if (required_age > 12 && required_age < 17) {
-      return Pegi["16"];
+      return pegi["16"];
     }
     if (required_age >= 0 && required_age < 4) {
-      return Pegi["3"];
+      return pegi["3"];
     }
-    return Pegi["18"];
+    return pegi["18"];
   };
   if (isLoading) {
     return (

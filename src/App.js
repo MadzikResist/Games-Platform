@@ -1,7 +1,7 @@
-import Dashboard from "./components/Dashboard";
-import OneGame from "./components/OneGame";
-import Store from "./components/Store";
-import { HashRouter, Route, Routes} from "react-router-dom";
+import Dashboard from "./components/dashboard/Dashboard";
+import OneGame from "./components/store/OneGame";
+import Store from "./components/store/Store";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (

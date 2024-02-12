@@ -1,0 +1,396 @@
+.dashboardContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0a0d16;
+  overflow-x: hidden;
+}
+.navbar {
+  width: 100vw;
+  height: 60px;
+  background-color: #151925;
+  position: relative;
+}
+.mainGameContainer {
+  width: 100vw;
+  height: 70%;
+  display: flex;
+  position: relative;
+}
+.mainGameTitleContainer {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 40px;
+  z-index: 13;
+}
+.specialOffer {
+  color: white;
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  user-select: none;
+}
+.specialOfferInfo {
+  width: 160px;
+  height: 35px;
+  background-color: #fe4300;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  user-select: none;
+}
+.mainGameContainerGradient {
+  background: linear-gradient(
+    to right,
+    rgba(10, 13, 22, 1),
+    rgba(255, 255, 255, 0.001)
+  );
+  width: 30%;
+  height: 100%;
+  z-index: 12;
+  position: absolute;
+  left: 0;
+}
+
+.mainGameContainerGradientBottom {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 13, 22, 0.01),
+    rgba(10, 13, 22, 1)
+  );
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 12;
+}
+
+.mainGameContainerGradientLeft {
+  background: linear-gradient(
+    to right,
+    rgba(45, 42, 97, 0.7),
+    rgba(1, 1, 1, 0.1),
+    rgba(45, 42, 97, 0.4),
+    rgba(1, 1, 1, 0.87)
+  );
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 12;
+}
+.mainGameTitle {
+  color: white;
+  font-size: 100px;
+  font-weight: 800;
+  line-height: 0.9;
+  user-select: none;
+}
+.preOrder {
+  width: 400px;
+  height: 60px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.1)
+  );
+  display: flex;
+  border-radius: 16px;
+  font-size: 20px;
+  align-items: center;
+  margin-top: 16px;
+}
+.preOrderButton {
+  width: 150px;
+  height: 70%;
+  background-color: #fe4300;
+  border-radius: 16px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  margin-right: 8px;
+  user-select: none;
+  cursor: pointer;
+}
+.inputEmail {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background-color: transparent;
+  border: none;
+  padding: 0 16px;
+  outline: none;
+  color: white;
+  font-size: 20px;
+}
+.popularGamesDots {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 40px;
+  align-items: center;
+}
+.popularGamePad {
+  background-color: #fe4300;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.popularGameTextPad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  gap: 16px;
+}
+.popularGamesText {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+.dotsContainer{
+  display: flex;
+  /*width: 40%;*/
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+}
+.dots {
+  width: 70px;
+  height: 4px;
+  border-radius: 8px;
+}
+.containerGamesDashboard{
+  padding: 40px;
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 75px
+}
+
+.popularGames{
+  /*margin-right: 60px;*/
+  display: flex;
+  flex-direction: column;
+  /*width: 250px;*/
+  /*height: 160px;*/
+  position: relative;
+  align-items: center;
+  transition: opacity 0.2s ease-in-out;
+  overflow: hidden;
+  border-radius: 4px;
+  z-index: 15;
+}
+.popularGames:hover .gameBlur{
+  filter:  blur(5px) brightness(50%);
+  transition: filter 0.5s ease;
+
+}
+.popularGames:hover .gameDashboard::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Kolor ciemnego filtra */
+  border-radius: 4px;
+  opacity: 0; /* Początkowo niewidoczny */
+  transition: background-color 0.5s ease;
+
+}
+.popularGames:hover  .gameDashboard::after {
+  opacity: 1; /* Wyświetlaj filtry przy najechaniu */
+  transition: background-color 0.5s ease;
+
+}
+.popularGames:hover{
+  cursor: pointer;
+}
+.gameBlur{
+  width: 300px;
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  background-size: cover;
+  filter: blur(5px) brightness(40%);
+}
+
+.gameDashboard {
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  background-size: contain;
+  position: absolute;
+}
+.shopButton{
+  background-color: #fe4300;
+  position: absolute;
+  display: flex;
+  padding: 0;
+  width: 0;
+  height:0;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+  color: white;
+  border-radius: 4px;
+  top: 30%;
+  font-size: 0;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.popularGames:hover  .shopButton {
+  width: 180px;
+  height: 40px;
+  font-size:18px;
+}
+.popularGameBar{
+  width: 300px;
+  background-color: #242730;
+  border-radius: 0 0 4px 4px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  flex-direction: column;
+
+}
+.popularGames:hover  .popularGameBar {
+  background-color: #3a3e45;
+
+}
+.popularGameTitle{
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+}
+.popularGamePublisher{
+  margin-top: 4px;
+  color: #9d9ea0;
+  font-weight: 600;
+  font-size: 15px;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.loadingStyle{
+  padding-left: 40px;
+  color: white;
+}
+@media (max-width: 768px){
+  .mainGameTitleContainer {
+    width: 100%;
+    padding: 0 16px;
+    position: absolute;
+    justify-content: flex-start;
+    top: 24px
+  }
+  .mainGameContainer{
+    flex-direction: column-reverse;
+  }
+  .mainGameTitle {
+    font-size: 50px;
+  }
+  .specialOffer {
+    font-size: 24px;
+  }
+  .preOrder {
+    width: 350px;
+    height: 60px;
+    font-size: 16px;
+    position: absolute;
+    bottom: 15%;
+  }
+  .inputEmail {
+    font-size: 16px;
+  }
+  .popularGamesDots {
+    padding: 0 16px;
+    flex-direction: column-reverse;
+    gap: 40px
+  }
+  .dotsContainer{
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px
+
+  }
+  .containerGamesDashboard{
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+    gap: 16px
+  }
+}
+@media (min-width: 768px) and (max-width: 992px){
+  .mainGameTitle {
+    /*font-size: 70px;*/
+  }
+  /*.specialOffer {*/
+  /*  font-size: 24px;*/
+  /*}*/
+  /*.specialOffer {*/
+  /*  color: white;*/
+  /*  font-size: 30px;*/
+  /*  */
+
+  /*}*/
+  /*.preOrder {*/
+  /*  width: 350px;*/
+  /*  height: 60px;*/
+  /*  font-size: 16px;*/
+  /*  position:static;*/
+  /*  bottom: 15%;*/
+  /*}*/
+  .popularGamesDots {
+    padding: 0 16px;
+    flex-direction: column-reverse;
+    gap: 40px;
+
+  }
+  /*.dotsContainer{*/
+  /*  display: flex;*/
+  /*  width: 80%;*/
+  /*  align-items: center;*/
+  /*  justify-content: space-between;*/
+
+
+  /*}*/
+  .popularGameTextPad{
+    align-self: flex-start;
+    margin-left: 32px;
+
+  }
+
+
+}

@@ -1,5 +1,6 @@
-
-const ImageSliderOneGame = ({  current, setCurrent, oneGame }) => {
+import "./imageSliderOneGame.css";
+import "./imageSlider.css";
+const ImageSliderOneGame = ({ current, setCurrent, oneGame }) => {
   const length = oneGame.screenshots.length;
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
@@ -10,7 +11,6 @@ const ImageSliderOneGame = ({  current, setCurrent, oneGame }) => {
   if (!Array.isArray(oneGame.screenshots) || oneGame.screenshots.length <= 0) {
     return null;
   }
-  console.log('oneGame', oneGame)
 
   return (
     <div className="sliderOneGame">
@@ -36,10 +36,9 @@ const ImageSliderOneGame = ({  current, setCurrent, oneGame }) => {
       </div>
       <div
         style={{
-          width: '100%',
-          height: '100%',
+          width: "100%",
+          height: "100%",
           transform: `translateX(-${current * 100}%)`,
-
         }}
         className="slide"
       >
@@ -49,16 +48,15 @@ const ImageSliderOneGame = ({  current, setCurrent, oneGame }) => {
               key={index}
               className="imageSliderOneGame"
               style={{
-                position: 'absolute',
+                position: "absolute",
                 left: `${index * 100}%`,
-                width: '100%',
-                height: '100%',
+                width: "100%",
+                height: "100%",
                 backgroundImage: `url(${slide.path_thumbnail})`,
               }}
             />
           );
         })}
-
       </div>
     </div>
   );

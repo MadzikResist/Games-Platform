@@ -1,8 +1,9 @@
-import Navbar from "./Navbar";
-import ImageSlider from "./ImageSlider";
-import { SliderData } from "./SliderData";
+import Navbar from "../navbar/Navbar";
+import ImageSlider from "../imageSlider/ImageSlider";
+import { sliderData } from "../../const/sliderData";
 import { useState } from "react";
 import PopularGames from "./PopularGames";
+import "./dashboard.css";
 const Dashboard = () => {
   const [current, setCurrent] = useState(0);
 
@@ -31,7 +32,7 @@ const Dashboard = () => {
           </div>
         </div>
         <ImageSlider
-          slides={SliderData}
+          slides={sliderData}
           current={current}
           setCurrent={setCurrent}
         />
@@ -51,7 +52,7 @@ const Dashboard = () => {
           <div className="popularGamesText">POPULAR GAMES</div>
         </div>
         <div className="dotsContainer">
-          {SliderData.map((_, index) => {
+          {sliderData.map((_, index) => {
             return (
               <div
                 className="dots"

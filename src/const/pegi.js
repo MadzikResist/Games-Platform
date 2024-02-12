@@ -1,10 +1,10 @@
-import pegi3 from '../pegi3.png'
-import pegi7 from '../pegi7.png'
-import pegi12 from '../pegi12.png'
-import pegi16 from '../pegi16.png'
-import pegi18 from '../pegi18.png'
+import pegi3 from '../assets/pegi3.png'
+import pegi7 from '../assets/pegi7.png'
+import pegi12 from '../assets/pegi12.png'
+import pegi16 from '../assets/pegi16.png'
+import pegi18 from '../assets/pegi18.png'
 
-export const Pegi = {
+export const pegi = {
   3:{
     name: 'PEGI 3',
     image: pegi3,
