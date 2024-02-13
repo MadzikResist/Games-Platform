@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Games-Platform/static/css/main.54eb556e.css",
-    "main.js": "/Games-Platform/static/js/main.523d5a1f.js",
+    "main.css": "/Games-Platform/static/css/main.16aa57c8.css",
+    "main.js": "/Games-Platform/static/js/main.e77bbbd6.js",
     "static/media/loading.gif": "/Games-Platform/static/media/loading.9735ea8455bfe2b8cb75.gif",
     "static/media/pegi7.png": "/Games-Platform/static/media/pegi7.7f9afa4d96250c8b2cdd.png",
     "static/media/pegi3.png": "/Games-Platform/static/media/pegi3.8dbd8e81f66f49f5f160.png",
@@ -10,11 +10,11 @@
     "static/media/pegi16.png": "/Games-Platform/static/media/pegi16.f1263f1d5588a1da3ad6.png",
     "static/media/logo.png": "/Games-Platform/static/media/logo.9571b25c536ec2bb1d84.png",
     "index.html": "/Games-Platform/index.html",
-    "main.54eb556e.css.map": "/Games-Platform/static/css/main.54eb556e.css.map",
-    "main.523d5a1f.js.map": "/Games-Platform/static/js/main.523d5a1f.js.map"
+    "main.16aa57c8.css.map": "/Games-Platform/static/css/main.16aa57c8.css.map",
+    "main.e77bbbd6.js.map": "/Games-Platform/static/js/main.e77bbbd6.js.map"
   },
   "entrypoints": [
-    "static/css/main.54eb556e.css",
-    "static/js/main.523d5a1f.js"
+    "static/css/main.16aa57c8.css",
+    "static/js/main.e77bbbd6.js"
   ]
 }
