@@ -1,4 +1,3 @@
-import "./imageSliderOneGame.css";
 import "./imageSlider.css";
 const ImageSliderOneGame = ({ current, setCurrent, oneGame }) => {
   const length = oneGame.screenshots.length;
