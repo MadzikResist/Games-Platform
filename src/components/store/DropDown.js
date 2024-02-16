@@ -43,7 +43,7 @@ const DropDown = ({
         className="selected-option"
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         style={{
-          backgroundColor: isDropdownOpen ? "#3a3a3a" : "",
+          backgroundColor: isDropdownOpen && "#3a3a3a",
         }}
       >
         {isDropdownOpen ? <div className="oragneElement" /> : null}
