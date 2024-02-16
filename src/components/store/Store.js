@@ -170,7 +170,6 @@ const Store = () => {
           <Navbar />
         </div>
         <div className="gamesAndSort">
-          {/*<div className="gamesText">Games</div>*/}
           <div className="searchStore">
             <div className="searchIconStore">
               <svg
